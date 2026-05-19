@@ -1,0 +1,58 @@
+Sauce Demo – Page Object Model Test Suite
+A modular, end-to-end Selenium test suite built with the Page Object Model (POM) design pattern, validating the complete purchase journey on SauceDemo — from login through to order confirmation.
+
+-----------------------
+Project Overview
+-----------------------
+This project refactors a flat, single-class test script into a clean, maintainable POM architecture. Each page of the application has its own dedicated class that owns its locators and interactions. Test classes contain only test logic — no element selectors, no driver setup, no browser configuration. The result is a codebase where a locator change is a one-line fix, and adding a new test takes minutes.
+
+-----------------------
+Test Scenarios Covered
+-----------------------
+
+User Login – Submits valid credentials and confirms the Products page loads
+Add Item to Cart – Adds the Sauce Labs Backpack and verifies the cart badge updates
+Navigate to Cart – Opens the cart page and confirms it loads correctly
+Initiate Checkout – Proceeds from the cart and verifies the information from the form appears
+Enter Customer Information – Fills in shipping details and confirms navigation to the order overview
+Complete Order – Clicks Finish and asserts the confirmation message is displayed
+
+------------------
+Architecture
+------------------
+src/
+├── test/java/
+│   ├── base/
+│   │   ├── BasePage.java          # Shared WebDriver reference + PageFactory init
+│   │   └── BaseTest.java          # @BeforeClass setup and @AfterClass teardown
+│   ├── pages/
+│   │   ├── LoginPage.java         # Login form interactions
+│   │   ├── InventoryPage.java     # Product catalogue + add to cart
+│   │   ├── CartPage.java          # Cart navigation + checkout trigger
+│   │   ├── CheckoutInfoPage.java  # Shipping information form
+│   │   ├── CheckoutOverviewPage.java  # Order summary + finish
+│   │   └── ConfirmationPage.java  # Order confirmation message
+│   └── tests/
+│       └── OnlineOrderTest.java   # 6 priority-ordered @Test methods
+└── pom.xml
+
+----------------------
+Concepts Demonstrated
+-----------------------
+
+Page Object Model (POM) — Each application page has a dedicated class encapsulating its locators and actions, completely decoupled from test logic
+Inheritance — BasePage and BaseTest eliminate duplicated setup code across all page and test classes
+PageFactory & @FindBy — Annotation-driven element declaration replaces verbose driver.findElement(By...) calls
+Separation of Concerns — Test classes read like plain English; page classes own all UI knowledge
+Single Responsibility — Each class has one job; a locator change is a one-file fix
+Implicit Waits — Global timeout strategy handles dynamic page loading
+TestNG Prioritisation — @Test(priority = n) enforces the correct sequential flow across a stateful journey
+Javadoc & Inline Comments — Every class and method is documented for readability and portfolio clarity
+
+----------------
+How to Run
+----------------
+Clone the repository
+git clone 
+# Run all tests
+mvn test
