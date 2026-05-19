@@ -1,0 +1,35 @@
+Sauce Demo – End-to-End Automated Test Suite
+A Selenium-based automated test suite that validates the complete online shopping workflow on SauceDemo, from user authentication through to order completion.
+
+📋 Project Overview
+This project automates a full e-commerce purchase journey using Selenium WebDriver and TestNG, simulating real user interactions across six sequential test scenarios. It demonstrates practical UI test automation skills applicable to any modern web application.
+
+✅ Test Scenarios Covered
+
+User Login – Authenticates with valid credentials and verifies successful navigation to the product catalogue
+Add Item to Cart – Adds a product and confirms the cart badge updates correctly
+Navigate to Cart – Opens the cart page and verifies it loads as expected
+Initiate Checkout – Proceeds to checkout and confirms the information form is displayed
+Enter Customer Information – Fills in shipping details and advances to the order overview
+Complete Order – Finalises the purchase and verifies the confirmation message
+
+
+💡 Concepts Demonstrated
+
+Page Interaction – Locating elements using By.id, By.className, By.xpath, and By.name strategies
+Implicit Waits – Configuring global wait timeouts to handle dynamic page loading
+Test Ordering & Prioritisation – Using TestNG's @Test(priority = n) to enforce sequential execution of dependent tests
+Test Lifecycle Management – Using @BeforeClass and @AfterClass for setup and teardown
+Assertions – Validating expected outcomes with Assert.assertEquals and Assert.assertTrue
+ChromeOptions Configuration – Suppressing automation banners and browser notifications for cleaner test runs
+End-to-End Testing – Simulating a complete user journey across multiple pages and states
+
+
+🚀 How to Run
+bash# Clone the repository
+git clone <your-repo-url>
+
+# Run tests via Maven
+mvn test
+
+Prerequisites: Java 21+, Maven, and Google Chrome installed. WebDriverManager handles the ChromeDriver setup automatically.
