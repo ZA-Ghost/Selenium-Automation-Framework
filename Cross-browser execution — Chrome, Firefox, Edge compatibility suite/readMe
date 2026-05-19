@@ -1,0 +1,41 @@
+Sauce Demo – Page Object Model Test Suite
+A modular, end-to-end Selenium test suite built with the Page Object Model (POM) design pattern, validating the complete purchase journey on SauceDemo — from login through to order confirmation.
+
+-----------------------
+Project Overview
+-----------------------
+This project refactors a flat, single-class test script into a clean, maintainable POM architecture. Each page of the application has its own dedicated class that owns its locators and interactions. Test classes contain only test logic — no element selectors, no driver setup, no browser configuration. The result is a codebase where a locator change is a one-line fix, and adding a new test takes minutes.
+
+-----------------------
+Test Scenarios Covered
+-----------------------
+
+User Login – Submits valid credentials and confirms the Products page loads
+Add Item to Cart – Adds the Sauce Labs Backpack and verifies the cart badge updates
+Navigate to Cart – Opens the cart page and confirms it loads correctly
+Initiate Checkout – Proceeds from the cart and verifies the information from the form appears
+Enter Customer Information – Fills in shipping details and confirms navigation to the order overview
+Complete Order – Clicks Finish and asserts the confirmation message is displayed
+
+------------------
+### 🌐 Cross-Browser Support
+
+All test flows execute on Chrome, Firefox, and Edge without any code changes.
+The active browser is controlled entirely by the TestNG XML suite parameter.
+
+| Suite file | Browsers |
+|---|---|
+| `testng-chrome.xml` | Chrome only |
+| `testng-firefox.xml` | Firefox only |
+| `testng-edge.xml` | Edge only |
+| `testng-all-browsers.xml` | Chrome → Firefox → Edge in sequence |
+
+Run a specific browser from the command line:
+```bash
+mvn test -Dsuite=testng-chrome
+mvn test -Dsuite=testng-firefox
+mvn test -Dsuite=testng-edge
+```
+
+> Firefox and Edge must be installed on the machine.
+> WebDriverManager handles all driver binaries automatically.
