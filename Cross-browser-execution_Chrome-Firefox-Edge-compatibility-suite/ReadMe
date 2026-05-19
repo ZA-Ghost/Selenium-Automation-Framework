@@ -1,0 +1,21 @@
+### 🌐 Cross-Browser Support
+
+All test flows execute on Chrome, Firefox, and Edge without any code changes.
+The active browser is controlled entirely by the TestNG XML suite parameter.
+
+| Suite file | Browsers |
+|---|---|
+| `testng-chrome.xml` | Chrome only |
+| `testng-firefox.xml` | Firefox only |
+| `testng-edge.xml` | Edge only |
+| `testng-all-browsers.xml` | Chrome → Firefox → Edge in sequence |
+
+Run a specific browser from the command line:
+```bash
+mvn test -Dsuite=testng-chrome
+mvn test -Dsuite=testng-firefox
+mvn test -Dsuite=testng-edge
+```
+
+> Firefox and Edge must be installed on the machine.
+> WebDriverManager handles all driver binaries automatically.
